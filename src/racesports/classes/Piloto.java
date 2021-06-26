@@ -3,19 +3,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package racesports;
+package racesports.classes;
 
 /**
  *
  * @author nkrumah
  */
-public class RaceSports {
+public class Piloto {
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-        System.out.println("olá");
-    }
-    
+    public String nome;
+    public String equipa;
+    public Integer pontuacao;
 }
