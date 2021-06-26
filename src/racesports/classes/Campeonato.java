@@ -5,6 +5,7 @@
  */
 package racesports.classes;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 /**
@@ -15,7 +16,9 @@ public class Campeonato {
 
     public Piloto pilotos[];
     public String nome;
-    public Integer ano;
+    public int ano;
+    public int pontuacoes[];
+    public Prova provas[];
 
     public static Campeonato[] criarCampeonatos() {
         Scanner ler = new Scanner(System.in);
@@ -60,40 +63,53 @@ public class Campeonato {
             campeonato.pilotos = new Piloto[qtd_pilotos];
 
             for (int j = 0; j < qtd_pilotos; j++) {
-                Piloto piloto = new Piloto();
 
-                System.out.print("Digite o nome do " + (j + 1) + "º piloto: ");
-                piloto.nome = ler.nextLine();
-                while (piloto.nome.isEmpty() || piloto.nome.length() > 50) {
-                    System.out.println("O nome digitado é invalido.");
-                    System.out.print("Digite o nome do " + (j + 1) + "º piloto: ");
-                    piloto.nome = ler.nextLine();
-                }
-
-                System.out.print("Digite a equipa do " + (j + 1) + "º piloto: ");
-                piloto.equipa = ler.nextLine();
-
-                while (piloto.equipa.isEmpty() || piloto.equipa.length() > 50) {
-                    System.out.println("A equipa digitada é invalida.");
-                    System.out.print("Digite a equipa do " + (j + 1) + "º piloto: ");
-                    piloto.equipa = ler.nextLine();
-                }
+                Piloto piloto = Piloto.criarPiloto(j);
 
                 //Verificar existencia do piloto
                 while (Campeonato.validarPiloto(campeonato.pilotos, piloto, j)) {
-                    System.out.println("O piloto escolhido já foi inserido.");
-                    System.out.print("Digite o nome do " + (j + 1) + "º piloto: ");
-                    piloto.nome = ler.nextLine();
-
-                    System.out.print("Digite a equipa do " + (j + 1) + "º piloto: ");
-                    piloto.equipa = ler.nextLine();
+                    System.out.println("O piloto escolhido já existe, insira um novo piloto.");
+                    piloto = Piloto.criarPiloto(j);
                 }
 
                 campeonato.pilotos[j] = piloto;
             }
 
+            System.out.print("Insira quantidade de pontos do campeonato: ");
+            int qtd_pontos = ler.nextInt();
+            campeonato.pontuacoes = new int[qtd_pontos];
+
+            ler.nextLine();
+
+            for (int j = 0; j < qtd_pontos; j++) {
+                System.out.print("Insira o " + (j + 1) + "º ponto: ");
+                int n = ler.nextInt();
+                while (n <= 0) {
+                    System.out.println("Insira um número maior que 0.\nInsira o " + (j + 1) + "º ponto: ");
+                    n = ler.nextInt();
+                }
+                campeonato.pontuacoes[j] = n;
+            }
+
+            ler.nextLine();
+
+            campeonato.pontuacoes = Campeonato.ordenar(campeonato.pontuacoes);
+
+            System.out.println("Digite o numero de provas: ");
+            int qtd_provas = ler.nextInt();
+            while (qtd_provas < 1 || qtd_provas > 50) {
+                System.out.println("A quantidade de provas deve estar entre 1 e 50.");
+                System.out.println("Digite o numero de provas: ");
+                qtd_provas = ler.nextInt();
+            }
+
+            for (int j = 0; j < qtd_provas; j++) {
+                campeonato.provas[j] = Prova.criarProva(campeonato);
+            }
+
             campeonatos[i] = campeonato;
         }
+
         return campeonatos;
 
     }
@@ -107,6 +123,20 @@ public class Campeonato {
         }
 
         return false;
+    }
+
+    public static int[] ordenar(int v[]) {
+        for (int i = 0; i < v.length - 1; i++) {
+            for (int j = i + 1; j < v.length; j++) {
+
+                if (v[i] < v[j]) {
+                    int aux = v[j];
+                    v[j] = v[i];
+                    v[i] = aux;
+                }
+            }
+        }
+        return v;
     }
 
 }
