@@ -5,7 +5,6 @@
  */
 package racesports.classes;
 
-import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
@@ -15,71 +14,66 @@ import java.util.Scanner;
 public class Prova {
 
     public String nome;
-    public ArrayList<Piloto> classificados;
+    public Piloto pilotos[];
 
-    public static Prova criarProva(Campeonato campeonato) {
+    public static Prova criarProva(Campeonato campeonato, int tamanho) {
         Prova prova = new Prova();
-        Piloto piloto = new Piloto();
-        prova.classificados = new ArrayList<>();
+        prova.pilotos = new Piloto[campeonato.pilotos.length];
+
         Scanner ler = new Scanner(System.in);
-        System.out.println("Insira o nome da prova: ");
+        System.out.print("Insira o nome da " + (tamanho + 1) + "ª prova: ");
         prova.nome = ler.nextLine();
 
         while (prova.nome.isEmpty() || prova.nome.length() > 50) {
             System.out.println("O nome digitado é invalido.");
-            System.out.println("Insira o nome da prova: ");
+            System.out.print("Insira o nome da " + (tamanho + 1) + "ª prova: ");
             prova.nome = ler.nextLine();
         }
-        
+
         for (int i = 0; i < campeonato.pilotos.length; i++) {
-            System.out.println("Digite o nome do piloto na " + (i + 1) + "ª posição.");
-            piloto.nome = ler.nextLine();
+            prova.pilotos[i] = new Piloto();
 
-            System.out.println("Digite a equipa do piloto");
-            piloto.equipa = ler.nextLine();
+            System.out.print("Digite o nome e a equipa do piloto na " + (i + 1) + "ª posição, separados por virgula e espaço ex:(João, BMW): ");
+            String temp = ler.nextLine();
 
-            while (!(validarExistencia(campeonato.pilotos, piloto) && validarAusencia(prova.classificados, piloto))) {
-                System.out.println("O piloto inserido é invalido.");
-                System.out.println("Digite o nome do piloto na " + (i + 1) + "ª posição.");
-                piloto.nome = ler.nextLine();
+            while (!Piloto.validarDados(temp)) {
+                System.out.println("O formato de texto inserido é invalido.");
+                System.out.print("Digite o nome e a equipa do piloto na " + (i + 1) + "ª posição, separados por virgula e espaço ex:(João, BMW): ");
+                temp = ler.nextLine();
+            }
 
-                System.out.println("Digite a equipa do piloto");
-                piloto.equipa = ler.nextLine();
+            prova.pilotos[i].nome = temp.split(", ")[0];
+            prova.pilotos[i].equipa = temp.split(", ")[1];
+
+            while (!(Piloto.verificarExistencia(campeonato.pilotos, prova.pilotos[i], campeonato.pilotos.length) && !Piloto.verificarExistencia(prova.pilotos, prova.pilotos[i], i))) {
+                System.out.println("O piloto escolhido já foi classificado ou não participa desta competição.");
+                System.out.print("Digite o nome e a equipa do piloto na " + (i + 1) + "ª posição, separados por virgula e espaço ex:(João, BMW): ");
+                temp = ler.nextLine();
+
+                while (!Piloto.validarDados(temp)) {
+                    System.out.println("O formato de texto inserido é invalido.");
+                    System.out.print("Digite o nome e a equipa do piloto na " + (i + 1) + "ª posição, separados por virgula e espaço ex:(João, BMW): ");
+                    temp = ler.nextLine();
+                }
+
+                prova.pilotos[i].nome = temp.split(", ")[0];
+                prova.pilotos[i].equipa = temp.split(", ")[1];
+
             }
 
             if (i < campeonato.pontuacoes.length) {
-                piloto.pontuacao = piloto.pontuacao + campeonato.pontuacoes[i];
-            } else {
-                piloto.pontuacao = 0;
+                prova.pilotos[i].pontuacao = campeonato.pontuacoes[i];
+                for (int j = 0; j < campeonato.equipas.size(); j++) {
+                    if (campeonato.equipas.get(j).nome.equalsIgnoreCase(prova.pilotos[i].equipa)) {
+                        campeonato.equipas.get(j).pontos += campeonato.pontuacoes[i];
+                    }
+                }
+
             }
-            
-            prova.classificados.add(piloto);
 
         }
 
         return prova;
-    }
-
-    public static boolean validarExistencia(Piloto pilotos[], Piloto piloto) {
-
-        for (int i = 0; i < pilotos.length; i++) {
-            if (pilotos[i].nome.equalsIgnoreCase(piloto.nome) && pilotos[i].equipa.equalsIgnoreCase(piloto.equipa)) {
-                return true;
-            }
-        }
-
-        return false;
-    }
-
-    public static boolean validarAusencia(ArrayList<Piloto> pilotos, Piloto piloto) {
-
-        for (int i = 0; i < pilotos.size(); i++) {
-            if (pilotos.get(i).nome.equalsIgnoreCase(piloto.nome) && pilotos.get(i).equipa.equalsIgnoreCase(piloto.equipa)) {
-                return false;
-            }
-        }
-
-        return true;
     }
 
 }

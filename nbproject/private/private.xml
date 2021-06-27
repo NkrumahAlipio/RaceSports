@@ -3,7 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/home/nkrumah/NetBeansProjects/RaceSports/src/racesports/RaceSports.java</file>
+            <file>file:/home/nkrumah/NetBeansProjects/RaceSports/src/racesports/main.java</file>
+            <file>file:/home/nkrumah/NetBeansProjects/RaceSports/src/racesports/classes/Prova.java</file>
+            <file>file:/home/nkrumah/NetBeansProjects/RaceSports/src/racesports/classes/Piloto.java</file>
+            <file>file:/home/nkrumah/NetBeansProjects/RaceSports/src/racesports/classes/Campeonato.java</file>
         </group>
     </open-files>
 </project-private>
