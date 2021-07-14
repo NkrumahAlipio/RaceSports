@@ -1,0 +1,74 @@
+2
+
+Fórmula 1, 2020
+
+8
+Jason Bottom, McLaren (Mercedes)
+Jerry Lewis Hamilton, McLaren (Mercedes)
+Michael Schumasso, Mercedes (Mercedes)
+Nico Rosbife, Mercedes (Mercedes)
+Sebastian Pappel, Red Bull (Renault)
+Mark Bebber, Red Bull (Renault)
+Felipe Pasta, Ferrari (Ferrari)
+Fernando Afonso, Ferrari (Ferrari)
+
+10 25 18 15 12 10 8 6 4 2 1
+
+3
+
+GP do Bahrein
+Fernando Afonso, Ferrari (Ferrari)
+Felipe Pasta, Ferrari (Ferrari)
+Jerry Lewis Hamilton, McLaren (McLaren)
+Sebastian Pappel, Red Bull (Renault)
+Nico Rosbife, Mercedes (Mercedes)
+Michael Schumasso, Mercedes (Mercedes)
+Jason Bottom, McLaren (McLaren)
+Mark Bebber, Red Bull (Red Bull)
+
+GP da Australia
+Jason Bottom, McLaren (Mercedes)
+Felipe Pasta, Ferrari (Ferrari)
+Fernando Afonso, Ferrari (Ferrari)
+Nico Rosbife, Mercedes (Mercedes)
+Jerry Lewis Hamilton, McLaren (Mercedes)
+Mark Bebber, Red Bull (Red Bull)
+Michael Schumasso, Mercedes (Mercedes)
+Sebastian Pappel, Red Bull (Red Bull)
+
+GP da Malasia
+Sebastian Pappel, Red Bull (Renault)
+Mark Bebber, Red Bull (Renault)
+Nico Rosbife, Mercedes (Mercedes)
+Jerry Lewis Hamilton, McLaren (Mercedes)
+Felipe Pasta, Ferrari (Ferrari)
+Jason Bottom, McLaren (Mercedes)
+Fernando Afonso, Ferrari (Ferrari)
+Michael Schumasso, Mercedes (Mercedes)
+
+Corrida de Tartarugas de Angola, 2021
+
+5
+Leonardo, Flash Turtles
+Michaelangelo, United Turtles
+Donatello, Turtles Stars
+Mestre Splinter, Infinity Turtles
+Elio, Space Turtles
+
+3 10 6 2
+
+2
+
+Corrida do ISPTEC
+Elio, Space Turtles
+Michaelangelo, United Turtles
+Leonardo, Flash Turtles
+Mestre Splinter, Infinity Turtles
+Donatello, Turtles Stars
+
+Corrida do UTEC
+Donatello, Turtles Stars
+Mestre Splinter, Infinity Turtles
+Michaelangelo, United Turtles
+Elio, Space Turtles
+Leonardo, Flash Turtles
